@@ -1,0 +1,239 @@
+/* =========================================================
+   OfficeMassage — themes.css
+   3 presentation variants. Set on <html data-theme="...">
+   - calm        : Spokojny & drogi  (spa / premium, serif)
+   - corporate   : Energiczny & korporacyjny (blue, sharp, B2B)
+   - human       : Ciepły & ludzki   (warm, rounded, friendly)
+   ========================================================= */
+
+:root {
+    --font-mono: "Space Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --radius-pill: 100px;
+}
+
+/* ============ CALM & PREMIUM ============ */
+[data-theme="calm"] {
+    --font-display: "Cormorant Garamond", Georgia, serif;
+    --font-body: "Hanken Grotesk", system-ui, sans-serif;
+    --display-weight: 600;
+    --display-tracking: -0.01em;
+
+    --bg: oklch(0.972 0.008 95);
+    --surface: oklch(1 0 0);
+    --surface-2: oklch(0.955 0.012 95);
+    --text: oklch(0.27 0.02 150);
+    --muted: oklch(0.48 0.02 150);
+    --line: oklch(0.9 0.012 120);
+
+    --accent: oklch(0.55 0.055 155);
+    --accent-on: oklch(0.99 0.01 150);
+    --accent-ink: oklch(0.46 0.06 155);
+    --accent-soft: oklch(0.95 0.025 155);
+    --accent-2: oklch(0.7 0.07 75);
+    --accent-2-soft: oklch(0.95 0.03 80);
+
+    --radius-lg: 16px;
+    --radius-sm: 10px;
+
+    --shadow-card: 0 1px 2px oklch(0.5 0.02 150 / 0.05),
+        0 12px 32px oklch(0.4 0.03 150 / 0.06);
+    --shadow-accent: 0 8px 24px oklch(0.55 0.055 155 / 0.25);
+    --shadow-accent-hover: 0 14px 34px oklch(0.55 0.055 155 / 0.34);
+    --ph-stripe: oklch(0.88 0.015 120);
+}
+
+/* ============ ENERGETIC & CORPORATE ============ */
+[data-theme="corporate"] {
+    --font-display: "Space Grotesk", system-ui, sans-serif;
+    --font-body: "Hanken Grotesk", system-ui, sans-serif;
+    --display-weight: 700;
+    --display-tracking: -0.025em;
+
+    --bg: oklch(0.985 0.003 250);
+    --surface: oklch(1 0 0);
+    --surface-2: oklch(0.965 0.008 250);
+    --text: oklch(0.24 0.035 260);
+    --muted: oklch(0.5 0.03 260);
+    --line: oklch(0.9 0.014 255);
+
+    --accent: oklch(0.55 0.17 258);
+    --accent-on: oklch(0.99 0 0);
+    --accent-ink: oklch(0.5 0.17 258);
+    --accent-soft: oklch(0.95 0.04 258);
+    --accent-2: oklch(0.62 0.15 215);
+    --accent-2-soft: oklch(0.95 0.04 215);
+
+    --radius-lg: 10px;
+    --radius-sm: 6px;
+
+    --shadow-card: 0 1px 2px oklch(0.4 0.05 260 / 0.06),
+        0 10px 30px oklch(0.4 0.06 260 / 0.07);
+    --shadow-accent: 0 8px 22px oklch(0.55 0.17 258 / 0.3);
+    --shadow-accent-hover: 0 14px 32px oklch(0.55 0.17 258 / 0.4);
+    --ph-stripe: oklch(0.9 0.02 255);
+}
+
+/* ============ WARM & HUMAN ============ */
+[data-theme="human"] {
+    --font-display: "Hanken Grotesk", system-ui, sans-serif;
+    --font-body: "Hanken Grotesk", system-ui, sans-serif;
+    --display-weight: 800;
+    --display-tracking: -0.02em;
+
+    --bg: oklch(0.965 0.018 65);
+    --surface: oklch(0.995 0.006 65);
+    --surface-2: oklch(0.945 0.025 60);
+    --text: oklch(0.32 0.03 50);
+    --muted: oklch(0.52 0.03 50);
+    --line: oklch(0.89 0.022 55);
+
+    --accent: oklch(0.66 0.13 45);
+    --accent-on: oklch(0.99 0.01 60);
+    --accent-ink: oklch(0.56 0.13 45);
+    --accent-soft: oklch(0.94 0.04 50);
+    --accent-2: oklch(0.66 0.09 155);
+    --accent-2-soft: oklch(0.94 0.035 155);
+
+    --radius-lg: 26px;
+    --radius-sm: 16px;
+
+    --shadow-card: 0 2px 4px oklch(0.5 0.05 50 / 0.05),
+        0 16px 38px oklch(0.5 0.06 50 / 0.08);
+    --shadow-accent: 0 10px 26px oklch(0.66 0.13 45 / 0.3);
+    --shadow-accent-hover: 0 16px 36px oklch(0.66 0.13 45 / 0.4);
+    --ph-stripe: oklch(0.88 0.03 55);
+}
+
+/* ============ Theme switcher control ============ */
+.theme-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+}
+
+.theme-switch__btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.2s var(--ease);
+    border: 2px solid transparent;
+    display: grid;
+    place-items: center;
+}
+
+.theme-switch__btn::after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--dot);
+}
+
+.theme-switch__btn[data-set="calm"] {
+    --dot: oklch(0.55 0.055 155);
+}
+.theme-switch__btn[data-set="corporate"] {
+    --dot: oklch(0.55 0.17 258);
+}
+.theme-switch__btn[data-set="human"] {
+    --dot: oklch(0.66 0.13 45);
+}
+
+.theme-switch__btn:hover {
+    transform: scale(1.12);
+}
+
+.theme-switch__btn.is-active {
+    border-color: var(--dot);
+}
+
+/* Full labelled variant switcher used in the hero / sticky bar */
+.variant-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.variant-chip {
+    flex: 1 1 0;
+    min-width: 150px;
+    text-align: left;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--line);
+    background: var(--surface);
+    transition: border-color 0.2s var(--ease), transform 0.2s var(--ease),
+        box-shadow 0.2s var(--ease);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.variant-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+}
+
+.variant-chip.is-active {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+.variant-chip__dot {
+    width: 30px;
+    height: 8px;
+    border-radius: 100px;
+    margin-bottom: 6px;
+}
+.variant-chip[data-set="calm"] .variant-chip__dot {
+    background: oklch(0.55 0.055 155);
+}
+.variant-chip[data-set="corporate"] .variant-chip__dot {
+    background: oklch(0.55 0.17 258);
+}
+.variant-chip[data-set="human"] .variant-chip__dot {
+    background: oklch(0.66 0.13 45);
+}
+
+.variant-chip__name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    letter-spacing: 0;
+}
+
+.variant-chip__desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.35;
+}
+
+/* ============ Language switcher ============ */
+.lang-switch {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.lang-switch__btn {
+    padding: 7px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.lang-switch__btn.is-active {
+    background: var(--accent);
+    color: var(--accent-on);
+}
