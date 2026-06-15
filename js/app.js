@@ -743,7 +743,6 @@
                 fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     headers: { "Content-Type": "application/json", Accept: "application/json" },
-                    referrerPolicy: "strict-origin-when-cross-origin",
                     body: JSON.stringify(data),
                 })
                     .then(function (r) { return r.json(); })
