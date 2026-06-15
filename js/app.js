@@ -773,3 +773,20 @@
         init();
     }
 })();
+
+// Cookie banner
+(function () {
+    var banner = document.getElementById("cookieBanner");
+    if (!banner) return;
+    if (!localStorage.getItem("cookieConsent")) {
+        banner.style.display = "flex";
+    }
+    document.getElementById("cookieAccept").addEventListener("click", function () {
+        localStorage.setItem("cookieConsent", "accepted");
+        banner.style.display = "none";
+    });
+    document.getElementById("cookieReject").addEventListener("click", function () {
+        localStorage.setItem("cookieConsent", "rejected");
+        banner.style.display = "none";
+    });
+})();
